@@ -16,5 +16,7 @@ namespace Leltar
         {
             InitializeComponent();
         }
+
+        //TXT fájlbaírás --> számla
     }
 }
