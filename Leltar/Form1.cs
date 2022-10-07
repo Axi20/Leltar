@@ -21,7 +21,6 @@ namespace Leltar
         {
             InitializeComponent();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             //Placeholder text for textboxs on Kölcsönzés tab on Form1.cs design
