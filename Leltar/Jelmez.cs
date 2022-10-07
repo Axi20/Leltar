@@ -8,6 +8,7 @@ namespace Leltar
 {
     internal class Jelmez
     {
+       // public int sorszam;
         public string elnevezes;
         public string meret;
         public int napi_ar;
