@@ -54,20 +54,11 @@
     </Compile>
     <Compile Include="Jelmez.cs" />
     <Compile Include="Kolcsonzes.cs" />
-    <Compile Include="Kolcsonzes_adatai.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Kolcsonzes_adatai.Designer.cs">
-      <DependentUpon>Kolcsonzes_adatai.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ugyfel.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Kolcsonzes_adatai.resx">
-      <DependentUpon>Kolcsonzes_adatai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
