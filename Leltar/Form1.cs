@@ -17,6 +17,7 @@ namespace Leltar
                       Y: ÁFA kód
                       ZZ: két számjegyű területi kód
         */
+        List<Jelmez> jelmezek = new List<Jelmez>();
         Jelmez dragonGirl = new Jelmez(1, "Dragon girl", "XS", 5000, false);
         Jelmez horrorCostume = new Jelmez(2, "Horror costume", "S", 7000, false);
         Jelmez monsterBride = new Jelmez(3, "Monster bride", "XS", 4000, false);
@@ -25,13 +26,22 @@ namespace Leltar
         Jelmez skeletonBride = new Jelmez(6, "Skeleton bride", "M", 2000, false);
         Jelmez victorianDoll = new Jelmez(7, "Victorian doll", "L", 4000, false);
         Jelmez witch = new Jelmez(8, "Witch", "L", 3000, false);
+        string hozzaad = string.Empty;
+        
+
         
         public Form1()
         {
             InitializeComponent();
             GetJelmez();
-            
-
+            jelmezek.Add(dragonGirl);
+            jelmezek.Add(horrorCostume);
+            jelmezek.Add(monsterBride);
+            jelmezek.Add(owl);
+            jelmezek.Add(darkQuenn);
+            jelmezek.Add(skeletonBride);
+            jelmezek.Add(victorianDoll);
+            jelmezek.Add(witch);
 
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -397,9 +407,36 @@ namespace Leltar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
             int id = 0;
             id++;
+
+            List<string> jelmeznev = new List<string>() { };
+            List<Jelmez> jelmezek = new List<Jelmez>() { };
+            foreach (var item in listBox4.Items)
+            {
+                jelmeznev.Add(item.ToString());
+            }
+            for (int i = 0; i < 3; i++)
+            { 
+                jelmezek.Add(new Jelmez(i,"Név" + "nev", "meret" + "s", i + i, false ));
+            }
+
+            DataTable dt = new DataTable();
+           
+            dt.Columns.Add("Név");
+
+            foreach (var data in jelmezek)
+            {
+                DataRow dr = dt.NewRow();
+                dr["Név"] = "Title:" + data.elnevezes + "\nsorszam:" + data.sorszam + "\nAuthor:" + data.meret;
+                dt.Rows.Add(dr);
+            }
+
+            dataGridView1.DataSource = dt;
+            dataGridView1.Columns[0].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+           
             int napi_ar = 0;
             if (listBox4.Items.Contains(dragonGirl.elnevezes) == true) { napi_ar = dragonGirl.napi_ar; }
             if (listBox4.Items.Contains(monsterBride.elnevezes) == true ) { napi_ar = monsterBride.napi_ar; }
@@ -410,7 +447,7 @@ namespace Leltar
             if (listBox4.Items.Contains(victorianDoll.elnevezes) == true) { napi_ar = victorianDoll.napi_ar; }
             if (listBox4.Items.Contains(witch.elnevezes) == true) { napi_ar = witch.napi_ar; }
 
-            dataGridView1.Rows.Add(id, listBox4.Items.ToString(), listBox5.Items.ToString(), listBox1.Items.ToString(), napi_ar);
+            //dataGridView1.Rows.Add(id, listBox4.Items.ToString(), listBox5.Items.ToString(), listBox1.Items.ToString(), napi_ar);
 
         }//Rögzítés
 
@@ -465,5 +502,18 @@ namespace Leltar
             textBox37.Text = witch.napi_ar.ToString();
             textBox46.Text = witch.meret;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(textBox47.Text);
+            string nev = textBox14.Text;
+            string meret = comboBox1.SelectedItem.ToString();
+            int napi_ar = int.Parse(textBox15.Text);
+            bool elerheto = false;
+            hozzaad = textBox48.Text;
+            if (radioButton54.Checked) { elerheto = true; }
+            if (radioButton53.Checked) { elerheto = false; }
+            Jelmez hozzaad = new Jelmez(id, nev, meret, napi_ar, elerheto);
+        }//Új jelmez hozzáadása
     }
 }
